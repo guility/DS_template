@@ -21,7 +21,7 @@ COPY ./static /static
 COPY ./templates /templates
 
 COPY app.py /app.py
-COPY uwsgi.ini /etc/uwsgi/
+COPY cfg/uwsgi.ini /etc/uwsgi/
 
 EXPOSE 80
 EXPOSE 443
