@@ -7,6 +7,12 @@ from json import loads
 
 from flask import Flask, request, jsonify
 
+from cfg import output
+
+script_name = __file__.split("\\")[-1].split(".")[0] if "\\" in __file__ else __file__.split("/")[-1].split(".")[0]
+print(script_name)
+
+
 app = Flask(__name__)
 
 
@@ -17,6 +23,9 @@ def hello_world():
     describe methods specific to your application here
     :return:
     """
+    output.info("Root request")
+    output.error("MUST BE SHOWN")
+
     return 'use "/predict" for prediction with .json application'
 
 
@@ -27,7 +36,7 @@ def predict():
     :return:
     """
     inp_dct = loads(request.data)
-    print(inp_dct)
+    LOGGER.info(inp_dct)
     return jsonify({"response": list(range(9))})
 
 
